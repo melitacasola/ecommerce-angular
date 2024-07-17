@@ -1,3 +1,6 @@
+import { AboutUsModule } from './../about-us/about-us.module';
+
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -17,7 +20,8 @@ const routes: Routes = [
         component: ProductIdPageComponent
       }
     ]
-  }
+  },
+  
 ];
 
 @NgModule({
