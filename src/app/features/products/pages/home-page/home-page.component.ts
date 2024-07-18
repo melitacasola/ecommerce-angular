@@ -9,14 +9,11 @@ import { AuthService } from '../../../../core/services/auth.service';
 export class HomePageComponent implements OnInit {
   private token = sessionStorage.getItem('access_token');
   private authService = inject(AuthService);
-  public userValue!: string;
+  public userValue!: boolean;
 
   ngOnInit(): void {
-    console.log('HOLA DESDE HOME PAGE', this.token)
-
-    this.authService.isAdmin().subscribe((response: string) => {
+    this.authService.isAdmin().subscribe((response: boolean) => {
       this.userValue = response;
-      console.log('User value:', this.userValue);
     }, (error) => {
       console.error('Error fetching user profile:', error);
     });
