@@ -33,6 +33,15 @@ export class AuthService {
       );
   }
 
+  isLogged(): Observable<boolean> {
+    const token = sessionStorage.getItem('access_token');
+    if (!token) {
+      return of(false);
+    } else {
+      return of(true);
+    }
+  }
+
   logout() {
     sessionStorage.removeItem('access_token');
   }
