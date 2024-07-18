@@ -1,0 +1,14 @@
+<mat-card class="product-card" appearance="outlined">
+    <img mat-card-image [src]="cardImage" [alt]="cardTitle" />
+    <mat-card-content>
+        <mat-card-title>{{ cardTitle }}</mat-card-title>
+        <mat-card-subtitle>{{ cardSubtitle }}</mat-card-subtitle>
+        <p>{{ cardDescription | wordLimit:20 }}</p>
+    </mat-card-content>
+    <mat-card-content>
+        <p color="primary" class="price">€ {{ price }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button color="primary" mat-button (click)="onButtonClick()">Details</button>
+    </mat-card-actions>
+</mat-card>
