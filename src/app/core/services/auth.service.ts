@@ -30,8 +30,11 @@ export class AuthService {
       .pipe(
         map(response => response.role === 'admin'),
         catchError(() => of(false)),
-        tap(response => console.log(response))
       );
+  }
+
+  logout() {
+    sessionStorage.removeItem('access_token');
   }
 
 }
