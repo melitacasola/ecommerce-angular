@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IUser } from '../../../../core/interfaces/user.interface';
 import { GenericService } from '../../../../core/services/genericService/generic.service';
 
@@ -8,10 +8,9 @@ import { GenericService } from '../../../../core/services/genericService/generic
   styleUrl: './users-page.component.scss'
 })
 export class UsersPageComponent {
+  private usersService = inject( GenericService<IUser> ); 
 
-  constructor(
-    @Inject('usersService') private usersService: GenericService<IUser>
-  ) {
-    usersService.getList().subscribe((res) => console.log(res))
+  ngOnInit(): void {
+    this.usersService.getList().subscribe((res) => console.log(res))
   }
 }

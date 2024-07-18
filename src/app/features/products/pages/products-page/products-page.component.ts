@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { GenericService } from '../../../../core/services/genericService/generic.service';
 import { IProduct } from '../../../../core/interfaces/product.interface';
 
@@ -7,10 +7,10 @@ import { IProduct } from '../../../../core/interfaces/product.interface';
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
 })
-export class ProductsPageComponent {
-  constructor(
-    @Inject('productsService') private productsService: GenericService<IProduct>
-  ) {
-    productsService.getList().subscribe((res) => console.log(res))
+export class ProductsPageComponent implements OnInit{
+  private productsService = inject( GenericService<IProduct> ); 
+
+  ngOnInit(): void {
+    this.productsService.getList().subscribe((res) => console.log(res))
   }
 }

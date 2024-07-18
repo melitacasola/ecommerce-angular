@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
-import { GenericService } from './services/genericService/generic.service';
-import { IUser } from './interfaces/user.interface';
-import { IProduct } from './interfaces/product.interface';
+import { SERVICE_CONFIG } from './services/genericService/config/service-config';
+import { handleErrorInterceptor } from './interceptors/handle-error.interceptor';
 
 
 
@@ -13,22 +12,16 @@ import { IProduct } from './interfaces/product.interface';
   imports: [
     CommonModule
   ],
-  providers: [provideHttpClient(withInterceptors([authInterceptor])),
+  providers: [
+    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([handleErrorInterceptor])),
   {
-    provide: 'usersService',
-    useFactory: () =>
-      new GenericService<IUser>({
-        resourceEndpoint: 'users',
-      }),
-    deps: [HttpClient],
+    provide: SERVICE_CONFIG,
+    useValue: { resourceEndpoint: 'users' }
   },
   {
-    provide: 'productsService',
-    useFactory: () =>
-      new GenericService<IProduct>({
-        resourceEndpoint: 'products',
-      }),
-    deps: [HttpClient],
+    provide: SERVICE_CONFIG,
+    useValue: { resourceEndpoint: 'products' }
   }
   ]
 })

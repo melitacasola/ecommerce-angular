@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { IProduct } from '../../../../core/interfaces/product.interface';
 import { GenericService } from '../../../../core/services/genericService/generic.service';
 
@@ -8,9 +8,9 @@ import { GenericService } from '../../../../core/services/genericService/generic
   styleUrl: './product-id-page.component.scss'
 })
 export class ProductIdPageComponent {
-  constructor(
-    @Inject('productsService') private productsService: GenericService<IProduct>
-  ) {
-    productsService.getById(22).subscribe((res) => console.log(res))
+  private productsService = inject( GenericService<IProduct> ); 
+
+  ngOnInit(): void {
+    this.productsService.getById(2).subscribe((res) => console.log(res))
   }
 }

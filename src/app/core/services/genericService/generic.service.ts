@@ -1,29 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, inject, Injectable, InjectionToken } from '@angular/core';
+import { Inject, inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environments';
+import { SERVICE_CONFIG, ServiceConfig } from './config/service-config';
 
-
-export interface ServiceConfig {
-  resourceEndpoint: string;
-}
-
-export const SERVICE_CONFIG = new InjectionToken<ServiceConfig>('ServiceConfig')
 
 @Injectable({
   providedIn: 'root'
 })
 export class GenericService<TModel> {
   private http = inject(HttpClient);
-  protected readonly baseUrl?: string;
-  protected readonly resourceUrl?: string;
-
-  constructor(@Inject(SERVICE_CONFIG) config: ServiceConfig) {
-    this.baseUrl = environment.baseUrl;
-    this.resourceUrl = config.resourceEndpoint;
-  }
+  protected readonly config = inject( SERVICE_CONFIG );
+  protected readonly baseUrl: string = environment.baseUrl;
+  protected readonly resourceUrl: string = this.config.resourceEndpoint;
 
   getList(offset?: number) {
-    return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`, { params: { limit: 8, offset: offset??0 } });
+    return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`, { params: { limit: 8, offset: offset ?? 0 } });
   }
 
   getById(id: number) {
