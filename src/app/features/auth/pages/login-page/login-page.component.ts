@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../../../core/services/auth.service';
+import { AuthService } from '../../../../core/services/authService/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,14 +19,11 @@ export class LoginPageComponent {
     password: ['', Validators.required],
   });
 
-  
-
  onSubmit(): void {
   this.authService.login( this.loginForm.value ).subscribe({
     next: () => {
       this.router.navigate( ['home'] );
     }
   })
-  
  }
 }

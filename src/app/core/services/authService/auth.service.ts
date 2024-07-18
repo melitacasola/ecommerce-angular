@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environments';
-import { ILogin } from '../interfaces/login.interface';
+import { environment } from '../../../../environments/environments';
+import { ILogin } from '../../interfaces/login.interface';
 import { catchError, filter, map, Observable, of, tap } from 'rxjs';
-import { ITokens } from '../interfaces/tokens.interface';
-import { IUser } from '../interfaces/user.interface';
+import { ITokens } from '../../interfaces/tokens.interface';
+import { IUser } from '../../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'

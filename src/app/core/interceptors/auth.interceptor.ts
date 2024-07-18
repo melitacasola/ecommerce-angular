@@ -11,7 +11,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const requiresAuth = AuthUrls.some(url => req.url.includes(url));
 
   if (requiresAuth) {
-    console.log("ESTOY EN REQUIRESAUTH")
     const clonedRequest = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`
