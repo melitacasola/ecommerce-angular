@@ -4,12 +4,16 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { AngularMaterialsModule } from './angular-materials/angular-materials.module';
+import { CardPrincipalComponent } from './components/card-principal/card-principal.component';
+import { WordLimitPipe } from './pipes/wordLimit/word-limit.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    CardPrincipalComponent,
+    WordLimitPipe,
     NavbarComponent,
   ],
   imports: [
@@ -18,6 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RouterModule
   ],
   exports: [
+    HeaderComponent,
+    CardPrincipalComponent,
     HeaderComponent,
     NavbarComponent
   ]
