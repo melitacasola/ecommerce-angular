@@ -4,6 +4,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { SERVICE_CONFIG } from './services/genericService/config/service-config';
 import { handleErrorInterceptor } from './interceptors/handle-error.interceptor';
+import { notificationInterceptor } from './interceptors/notification.interceptor';
 
 
 
@@ -13,6 +14,7 @@ import { handleErrorInterceptor } from './interceptors/handle-error.interceptor'
     CommonModule
   ],
   providers: [
+    provideHttpClient(withInterceptors([notificationInterceptor])),
     provideHttpClient(withInterceptors([authInterceptor])),
     provideHttpClient(withInterceptors([handleErrorInterceptor])),
   {
