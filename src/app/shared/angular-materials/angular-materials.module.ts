@@ -16,12 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
-} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -39,7 +34,6 @@ import {
     MatButtonModule,
     MatGridListModule,
     MatToolbarModule,
-    MatDialogModule
   ]
 })
 export class AngularMaterialsModule { }
