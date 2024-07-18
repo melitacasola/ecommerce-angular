@@ -17,7 +17,6 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     CoreModule,
 ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
