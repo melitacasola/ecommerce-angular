@@ -17,11 +17,10 @@ export class AuthService {
     return this.http.post<ITokens>( `${this.url}auth/login`, loginForm )
       .pipe(
         tap( response => sessionStorage.setItem( 'access_token', response.access_token) ),
-        tap(response => console.log('acaen sercicio',  ))
       )
   }
 
-  isAdmin(): Observable<IUser> {
+  isAdmin(): Observable<string> {
     // Asegúrate de que el token está disponible antes de hacer la solicitud
     const token = sessionStorage.getItem('access_token');
     if (!token) {
@@ -30,8 +29,7 @@ export class AuthService {
     
     return this.http.get<IUser>(`${this.url}auth/profile`)
       .pipe(
-        tap(response => console.log('Profile response:', response)),
-        map(response => response)
+        map(response => response.role)
       );
   }
 

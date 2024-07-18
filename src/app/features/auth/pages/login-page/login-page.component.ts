@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,6 @@ export class LoginPageComponent {
   private fb = inject( NonNullableFormBuilder );
   private authService = inject( AuthService );
   private router = inject( Router );
-  private admin!: boolean;
   
   public loginForm = this.fb.group({
     email: ['', Validators.required],
@@ -23,17 +22,11 @@ export class LoginPageComponent {
   
 
  onSubmit(): void {
-  // const loginValue = {...this.loginForm.value};
   this.authService.login( this.loginForm.value ).subscribe({
     next: () => {
       this.router.navigate( ['home'] );
     }
   })
-  this.authService.isAdmin().subscribe({
-    next:()=> console.log('algo')
-    
-    
-  })
-
+  
  }
 }
