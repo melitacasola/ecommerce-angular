@@ -8,6 +8,7 @@ import { AngularMaterialsModule } from './angular-materials/angular-materials.mo
 import { CardPrincipalComponent } from './components/card-principal/card-principal.component';
 import { WordLimitPipe } from './pipes/wordLimit/word-limit.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DefaultImagePipe } from './pipes/default-image/default-image.pipe';
 import { SearchComponent } from './components/search/search.component';
 import {MatListModule} from '@angular/material/list'
 
@@ -16,6 +17,7 @@ import {MatListModule} from '@angular/material/list'
     CardPrincipalComponent,
     HeaderComponent,
     NavbarComponent,
+    DefaultImagePipe,
     SearchComponent,
     WordLimitPipe,
   ],
@@ -30,7 +32,8 @@ import {MatListModule} from '@angular/material/list'
     CardPrincipalComponent,
     HeaderComponent,
     NavbarComponent,
-    SearchComponent,
-  ],
+    DefaultImagePipe,
+    SearchComponent
+  ]
 })
 export class SharedModule { }

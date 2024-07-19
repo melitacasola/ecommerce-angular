@@ -23,10 +23,4 @@ export class CategoriesFilterComponent implements OnInit{
     })
   }
 
-  // @Input() categoriesList: Category[] = [];
-  // @Output() categorySelected = new EventEmitter<Category>();
-
-  // onCategorySelect(category: Category): void {
-  //   this.categorySelected.emit(category);
-  // }
 }
