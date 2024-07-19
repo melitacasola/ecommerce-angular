@@ -1,1 +1,36 @@
-<p>sign-up-page works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
+
+    <h1>Register</h1>
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" matInput placeholder="example@mail.com" formControlName="email">
+        <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+            Invalid email format
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput placeholder="Contraseña" formControlName="password" minlength="4">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+            Password must be at least 4 characters
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input type="text" matInput placeholder="Username" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Avatar</mat-label>
+        <input type="text" matInput placeholder="Url avatar" formControlName="avatar">
+    </mat-form-field>
+
+    <button mat-button mat-flat-button color="primary" type="submit" [disabled]="registerForm.invalid">
+        <mat-icon>save</mat-icon>
+        Save
+    </button>
+
+</form>
