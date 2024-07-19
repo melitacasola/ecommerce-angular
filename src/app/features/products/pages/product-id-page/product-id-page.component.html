@@ -1,1 +1,16 @@
-<p>product-id-page works!</p>
+<main>
+
+   <app-card-principal 
+       [cardImage]="infoProduct.category.image"
+       [cardTitle]="infoProduct.title"
+       [cardSubtitle]="infoProduct.category.name"
+       [cardDescription]="infoProduct.description"
+       [price]="infoProduct.price"
+       [textButton]="'Go to Buy'"
+       classCard="product-card"
+   />   
+
+</main>
+    
+    
+

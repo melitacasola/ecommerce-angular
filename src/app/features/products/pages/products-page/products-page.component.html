@@ -11,12 +11,13 @@
     <section class="container-products">
         <app-card-principal
         *ngFor="let item of filterProduct"
-            [cardImage]="item.images[0]"
+            [cardImage]="item.category.image"
             [cardTitle]="item.title"
             [cardSubtitle]="item.category.name"
             [cardDescription]="item.description"
             [price]="item.price"
-            (buttonClicked)="goToDetails(item.id)"
+            [textButton]="'Details'"
+        (buttonClicked)="goToDetails(item.id)"
         />
       </section>
 

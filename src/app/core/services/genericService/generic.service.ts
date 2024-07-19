@@ -18,7 +18,7 @@ export class GenericService<TModel> {
   }
 
   getById(id: number) {
-    return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}/${id}`);
+    return this.http.get<TModel>(`${this.baseUrl}${this.resourceUrl}/${id}`);
   }
 
   add(dto: TModel) {
