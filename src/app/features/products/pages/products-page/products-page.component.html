@@ -1,20 +1,27 @@
-<p>products-page works!</p>
+<div>
 
-<div class="container-search">
-  <shared-search
-  placeholder="buscar productos..."
-  (onDebounce)="searchTerm($event)"
-  />
-</div>
-
-<section class="container-products">
-    <app-card-principal
-    *ngFor="let item of filterProduct"
-        [cardImage]="item.images[0]"
-        [cardTitle]="item.title"
-        [cardSubtitle]="item.category.name"
-        [cardDescription]="item.description"
-        [price]="item.price"
-        (buttonClicked)="goToDetails(item.id)"
+  <div class="container-search">
+    <shared-search
+    placeholder="buscar productos..."
+    (onDebounce)="searchTerm($event)"
     />
-</section>
+  </div>
+
+  <div class="container-content">
+    <section class="container-products">
+        <app-card-principal
+        *ngFor="let item of filterProduct"
+            [cardImage]="item.images[0]"
+            [cardTitle]="item.title"
+            [cardSubtitle]="item.category.name"
+            [cardDescription]="item.description"
+            [price]="item.price"
+            (buttonClicked)="goToDetails(item.id)"
+        />
+      </section>
+
+    <div class="container-category-menu">
+      <shared-category-menu />
+    </div>
+  </div>
+</div>

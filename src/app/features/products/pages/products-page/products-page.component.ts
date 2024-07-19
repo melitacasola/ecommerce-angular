@@ -20,7 +20,6 @@ export class ProductsPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.productsService.getList().subscribe((res) => {res.forEach((item) => {this.infoProducts.push(new Product(item)); this.filterProduct = this.infoProducts} )})
-
   }
 
   goToDetails(id: number): void {
@@ -28,7 +27,6 @@ export class ProductsPageComponent implements OnInit{
   }
 
   searchTerm(term: string): void {
-    console.log({term});
     this.filterProduct = this.utilsSearch.searchFn(term, this.infoProducts) as Product[]
   }
 }

@@ -8,27 +8,32 @@ import { CardPrincipalComponent } from './components/card-principal/card-princip
 import { WordLimitPipe } from './pipes/wordLimit/word-limit.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
-
+import { CategoryMenuComponent } from './components/category-menu/category-menu.component';
+import {MatListModule} from '@angular/material/list'
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
     CardPrincipalComponent,
-    WordLimitPipe,
+    CategoryMenuComponent,
+    HeaderComponent,
     NavbarComponent,
     SearchComponent,
+    WordLimitPipe,
   ],
   imports: [
-    CommonModule,
     AngularMaterialsModule,
-    RouterModule
+    CommonModule,
+    CoreModule,
+    MatListModule,
+    RouterModule,
   ],
   exports: [
-    HeaderComponent,
     CardPrincipalComponent,
+    CategoryMenuComponent,
     HeaderComponent,
     NavbarComponent,
-    SearchComponent
+    SearchComponent,
   ]
 })
 export class SharedModule { }

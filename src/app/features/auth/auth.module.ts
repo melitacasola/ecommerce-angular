@@ -17,7 +17,8 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
     CommonModule,
     AuthRoutingModule,
     AngularMaterialsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ]
 })
 export class AuthModule { }
