@@ -1,8 +1,15 @@
 <p>products-page works!</p>
 
+<div class="container-search">
+  <shared-search
+  placeholder="buscar productos..."
+  (onDebounce)="searchTerm($event)"
+  />
+</div>
+
 <section class="container-products">
-    <app-card-principal 
-    *ngFor="let item of infoProducts"
+    <app-card-principal
+    *ngFor="let item of filterProduct"
         [cardImage]="item.images[0] || ' '"
         [cardTitle]="item.title"
         [cardSubtitle]="item.category.name"

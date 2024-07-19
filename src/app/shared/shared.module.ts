@@ -8,6 +8,7 @@ import { CardPrincipalComponent } from './components/card-principal/card-princip
 import { WordLimitPipe } from './pipes/wordLimit/word-limit.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DefaultImagePipe } from './pipes/default-image/default-image.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { DefaultImagePipe } from './pipes/default-image/default-image.pipe';
     WordLimitPipe,
     NavbarComponent,
     DefaultImagePipe,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { DefaultImagePipe } from './pipes/default-image/default-image.pipe';
     HeaderComponent,
     NavbarComponent,
     DefaultImagePipe
+    SearchComponent
   ]
 })
 export class SharedModule { }
