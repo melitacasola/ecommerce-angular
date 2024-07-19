@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environments';
 import { ILogin } from '../../interfaces/login.interface';
-import { catchError, filter, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { ITokens } from '../../interfaces/tokens.interface';
-import { IUser } from '../../interfaces/user.interface';
+import { IRegister, IUser } from '../../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,15 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem('access_token');
+  }
+
+  register(registerForm: IRegister): Observable<IUser> {
+    return this.http.post<IUser>(`${this.url}users`, registerForm).pipe(
+      catchError(error => {
+        console.error('Error during registration:', error);
+        return throwError(() => new Error('Registration failed'));
+      })
+    );
   }
 
 }
