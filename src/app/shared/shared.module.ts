@@ -30,7 +30,7 @@ import { SearchComponent } from './components/search/search.component';
     CardPrincipalComponent,
     HeaderComponent,
     NavbarComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
     SearchComponent
   ]
 })
