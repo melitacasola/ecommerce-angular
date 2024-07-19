@@ -8,11 +8,11 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
 import { ProductIdPageComponent } from './pages/product-id-page/product-id-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  {
-    path: 'products', children: [
+  { path: '', component: HomePageComponent,
+     children: [
+
       {
-        path: '',
+        path: 'products',
         component: ProductsPageComponent
       },
       {
@@ -21,7 +21,7 @@ const routes: Routes = [
       }
     ]
   },
-  
+
 ];
 
 @NgModule({

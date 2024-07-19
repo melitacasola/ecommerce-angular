@@ -5,6 +5,7 @@ import { UsersRoutingModule } from './users-routing.module';
 
 import { UsersIdPageComponent } from './pages/users-id-page/users-id-page.component';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { UsersPageComponent } from './pages/users-page/users-page.component';
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    SharedModule,
   ]
 })
 export class UsersModule { }

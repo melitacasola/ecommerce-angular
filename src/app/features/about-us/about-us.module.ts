@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.compon
   ],
   imports: [
     CommonModule,
-    AboutUsRoutingModule
+    AboutUsRoutingModule,
+    SharedModule
   ]
 })
 export class AboutUsModule { }
