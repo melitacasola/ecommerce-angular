@@ -3,11 +3,12 @@
 <section class="container-products">
     <app-card-principal 
     *ngFor="let item of infoProducts"
-        [cardImage]="item.images[0]"
+        [cardImage]="item.category.image"
         [cardTitle]="item.title"
         [cardSubtitle]="item.category.name"
         [cardDescription]="item.description"
         [price]="item.price"
+        [textButton]="'Details'"
         (buttonClicked)="goToDetails(item.id)"
     />
 </section>

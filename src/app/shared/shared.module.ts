@@ -9,6 +9,7 @@ import { WordLimitPipe } from './pipes/wordLimit/word-limit.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -25,7 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HeaderComponent,
     CardPrincipalComponent,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
   ]
 })
 export class SharedModule { }
