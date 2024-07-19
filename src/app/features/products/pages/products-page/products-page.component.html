@@ -3,7 +3,7 @@
 <section class="container-products">
     <app-card-principal 
     *ngFor="let item of infoProducts"
-        [cardImage]="item.images[0]"
+        [cardImage]="item | defaultImage"
         [cardTitle]="item.title"
         [cardSubtitle]="item.category.name"
         [cardDescription]="item.description"

@@ -7,6 +7,7 @@ import { AngularMaterialsModule } from './angular-materials/angular-materials.mo
 import { CardPrincipalComponent } from './components/card-principal/card-principal.component';
 import { WordLimitPipe } from './pipes/wordLimit/word-limit.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DefaultImagePipe } from './pipes/default-image/default-image.pipe';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CardPrincipalComponent,
     WordLimitPipe,
     NavbarComponent,
+    DefaultImagePipe,
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HeaderComponent,
     CardPrincipalComponent,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    DefaultImagePipe
   ]
 })
 export class SharedModule { }
