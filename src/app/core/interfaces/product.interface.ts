@@ -7,7 +7,7 @@ export interface IProduct {
     images: string[];
 }
 
-interface Category {
+export interface Category {
     id: number;
     name: string;
     image: string;

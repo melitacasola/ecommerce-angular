@@ -1,7 +1,5 @@
 <mat-card [class]="classCard" appearance="outlined">
-
-    <img mat-card-image [src]="cardImage" [alt]="cardTitle" />
-
+    <img mat-card-image [src]= "cardImage | defaultImage" [alt]="cardTitle" />
     <mat-card-content class="second-part">
         <mat-card-title>{{ cardTitle }}</mat-card-title>
         <mat-card-subtitle>{{ cardSubtitle }}</mat-card-subtitle>

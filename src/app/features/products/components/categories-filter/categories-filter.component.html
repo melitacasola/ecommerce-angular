@@ -1,0 +1,9 @@
+<mat-selection-list #categories [multiple]="false" class="catego">
+  @for (category of categoriesList; track category) {
+    <mat-list-option [value]="category" color="primary">{{category.name}}</mat-list-option>
+  }
+</mat-selection-list>
+
+<p>
+  Option selected: {{ categories.selectedOptions.hasValue() ? categories.selectedOptions.selected[0].value.name : ' ' }}
+</p>

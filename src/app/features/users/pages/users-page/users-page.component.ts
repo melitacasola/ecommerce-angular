@@ -8,9 +8,9 @@ import { GenericService } from '../../../../core/services/genericService/generic
   styleUrl: './users-page.component.scss'
 })
 export class UsersPageComponent {
-  private usersService = inject( GenericService<IUser> ); 
+  private usersService = inject( GenericService<IUser> );
 
   ngOnInit(): void {
-    this.usersService.getList().subscribe((res) => console.log(res))
+    this.usersService.getList().subscribe((res) => console.log(res, 'llega esto??¿¿'))
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environments';
-import { SERVICE_CONFIG, ServiceConfig } from './config/service-config';
+import { SERVICE_CONFIG } from './config/service-config';
 
 
 @Injectable({
@@ -33,4 +33,7 @@ export class GenericService<TModel> {
     return this.http.delete<number>(`${this.baseUrl}${this.resourceUrl}/${id}`);
   }
 
+  getCategory(){
+    return this.http.get<TModel[]>('https://api.escuelajs.co/api/v1/categories?limit=10');
+  }
 }
