@@ -6,6 +6,8 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersIdPageComponent } from './pages/users-id-page/users-id-page.component';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { SharedModule } from '../../shared/shared.module';
+import { SERVICE_CONFIG } from '../../core/services/genericService/config/service-config';
+import { GenericService } from '../../core/services/genericService/generic.service';
 
 
 @NgModule({
@@ -17,6 +19,13 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     UsersRoutingModule,
     SharedModule,
+  ],
+  providers: [
+    GenericService,
+    {
+      provide: SERVICE_CONFIG,
+      useValue: {resourceEndpoint: 'users'}
+    }
   ]
 })
 export class UsersModule { }

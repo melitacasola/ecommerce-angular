@@ -22,7 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   declarations: [],
   imports: [
     CommonModule,
-    
+
   ],
   providers: [
     provideAnimationsAsync()
@@ -34,7 +34,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatGridListModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
   ]
 })
 export class AngularMaterialsModule { }

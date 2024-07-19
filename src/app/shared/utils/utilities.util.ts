@@ -5,9 +5,5 @@ export class Utilities {
 
   searchFn(searchTerm: string, list:(Product | User)[]){
     return list.filter( item => item.getSearchValue().includes(searchTerm))
-
-
-
-
   }
 }
