@@ -30,6 +30,7 @@ import { LoadInterceptor } from './interceptors/load.interceptor';
     provide: SERVICE_CONFIG,
     useValue: { resourceEndpoint: 'products' }
   }
-  ]
+  ],
+  exports: [LoadingOverlayComponent]
 })
 export class CoreModule { }
