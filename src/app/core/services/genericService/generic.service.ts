@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environments';
 import { SERVICE_CONFIG } from './config/service-config';
 
@@ -14,8 +14,6 @@ export class GenericService<TModel> {
   protected readonly resourceUrl: string = this.config.resourceEndpoint;
 
   getList(offset?: number) {
-    console.log(this.resourceUrl, 'generic');
-
     return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`, { params: { limit: 8, offset: offset ?? 0 } });
   }
 

@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 
 import { AppRoutingModule } from './app-routing.module';
