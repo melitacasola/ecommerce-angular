@@ -16,9 +16,17 @@
       <td mat-cell *matCellDef="let infoUser"> {{infoUser.email}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let infoUser"> {{infoUser.role}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="avatar">
       <th mat-header-cell *matHeaderCellDef> Avatar </th>
-      <td mat-cell *matCellDef="let infoUser"> {{infoUser.avatar}} </td>
+      <th mat-cell *matCellDef="let infoUser" class="img-container">
+        <img   [src]="infoUser?.avatar" alt="icon user">
+
+      </th>
     </ng-container>
 
     <ng-container matColumnDef="actions">

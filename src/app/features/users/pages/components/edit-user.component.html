@@ -1,12 +1,16 @@
 <h1 mat-dialog-title>Edit User</h1>
-    <div mat-dialog-content>
+    <div mat-dialog-content class="edit-modal-container">
       <mat-form-field>
-        <mat-label>Name</mat-label>
+        <label>Name</label>
         <input matInput [(ngModel)]="data.name">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Email</mat-label>
+        <label>Email</label>
         <input matInput [(ngModel)]="data.email">
+      </mat-form-field>
+      <mat-form-field>
+        <label>Role</label>
+        <input matInput [(ngModel)]="data.role">
       </mat-form-field>
     </div>
     <div mat-dialog-actions>
