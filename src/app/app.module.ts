@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { MeliErrorPageModule } from 'meli-error-page';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MeliErrorPageModule,
     CoreModule,
     ToastrModule.forRoot({
       timeOut: 5000,

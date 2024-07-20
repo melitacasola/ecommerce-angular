@@ -9,11 +9,19 @@
         <input matInput [(ngModel)]="data.email">
       </mat-form-field>
       <mat-form-field>
+        <label>Password</label>
+        <input matInput [(ngModel)]="data.password">
+      </mat-form-field>
+      <mat-form-field>
         <label>Role</label>
         <input matInput [(ngModel)]="data.role">
+      </mat-form-field>
+      <mat-form-field>
+        <label>avatar</label>
+        <input matInput [(ngModel)]="data.avatar">
       </mat-form-field>
     </div>
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Cancel</button>
-      <button mat-button [mat-dialog-close]="data">Save</button>
+      <button mat-button [mat-dialog-close]="data" >Save</button>
 </div>

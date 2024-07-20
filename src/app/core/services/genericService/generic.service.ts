@@ -13,8 +13,8 @@ export class GenericService<TModel> {
   protected readonly baseUrl: string = environment.baseUrl;
   protected readonly resourceUrl: string = this.config.resourceEndpoint;
 
-  getList(offset?: number) {
-    return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`, { params: { limit: 1000, offset: offset ?? 0 } });
+  getList(limit: number, offset?: number) {
+    return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`, { params: { limit: limit.toString(), offset: offset ?? 0 } });
   }
 
   getById(id: number) {
@@ -25,8 +25,8 @@ export class GenericService<TModel> {
     return this.http.post<TModel>(`${this.baseUrl}${this.resourceUrl}`, dto);
   }
 
-  update(dto: TModel) {
-    return this.http.put<TModel>(`${this.baseUrl}${this.resourceUrl}`, dto);
+  update(id: number, dto: TModel) {
+    return this.http.put<TModel>(`${this.baseUrl}${this.resourceUrl}/${id}`, dto);
   }
 
   remove(id: number) {
