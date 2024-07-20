@@ -1,5 +1,9 @@
 .about-container {
     padding: 2em;
+    display: grid;
+    mat-grid-list-content {
+        width: 100%;
+    }
     mat-card {
         padding: 0.5em;
     }
@@ -8,3 +12,15 @@
 img {
     border-radius: 50%
 }
+@media (max-width: 600px) {
+    .about-container {
+        background-color: red;
+        display: inline-block;
+    }
+  }
+  
+  @media (max-width: 599px) {
+    .mat-grid-list {
+      grid-template-columns: 1fr !important; 
+    }
+  }
