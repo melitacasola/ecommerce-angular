@@ -10,6 +10,7 @@ import { SERVICE_CONFIG } from '../../core/services/genericService/config/servic
 import { GenericService } from '../../core/services/genericService/generic.service';
 import { CategoriesFilterComponent } from './components/categories-filter/categories-filter.component';
 import { AngularMaterialsModule } from '../../shared/angular-materials/angular-materials.module';
+import { HomePrincipalComponent } from './pages/home-principal/home-principal.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AngularMaterialsModule } from '../../shared/angular-materials/angular-m
     HomePageComponent,
     ProductsPageComponent,
     ProductIdPageComponent,
-    CategoriesFilterComponent
+    CategoriesFilterComponent,
+    HomePrincipalComponent
   ],
   imports: [
     CommonModule,

@@ -33,6 +33,10 @@ export class AuthService {
       );
   }
 
+  userHome(): Observable<IUser> {
+    return this.http.get<IUser>(`${this.url}auth/profile`)
+  }
+
   isLogged(): Observable<boolean> {
     const token = sessionStorage.getItem('access_token');
     if (!token) {
