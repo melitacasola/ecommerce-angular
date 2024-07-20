@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import { SharedModule } from '../../shared/shared.module';
+import { AngularMaterialsModule } from '../../shared/angular-materials/angular-materials.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     AboutUsRoutingModule,
-    SharedModule
+    SharedModule,
+    AngularMaterialsModule
   ]
 })
 export class AboutUsModule { }
