@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class HomePrincipalComponent implements OnInit {
   private router = inject(Router);
   private authService = inject(AuthService);
-  public userHome!: IUser;
+  public userHome?: IUser;
 
   ngOnInit(): void {
     this.authService.userHome().subscribe({

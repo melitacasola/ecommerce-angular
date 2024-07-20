@@ -1,6 +1,6 @@
 <mat-selection-list #categories [multiple]="false" class="catego">
   @for (category of categoriesList; track category) {
-    <mat-list-option [value]="category" color="primary">{{category.name}}</mat-list-option>
+    <mat-list-option [value]="category" color="primary" (click)="onCategorySelect(category)" >{{category.name}}</mat-list-option>
   }
 </mat-selection-list>
 

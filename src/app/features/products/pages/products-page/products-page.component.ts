@@ -1,11 +1,9 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { GenericService } from '../../../../core/services/genericService/generic.service';
 import { Category, IProduct } from '../../../../core/interfaces/product.interface';
 import { Router } from '@angular/router';
 import { Utilities } from '../../../../shared/utils/utilities.util';
 import { Product } from '../../../../core/models/product.model';
-import { User } from '../../../../core/models/user.model';
-import { IUser } from '../../../../core/interfaces/user.interface';
 
 
 @Component({
@@ -16,19 +14,29 @@ import { IUser } from '../../../../core/interfaces/user.interface';
 export class ProductsPageComponent implements OnInit{
   private productsService = inject( GenericService<IProduct> );
   private router = inject(Router);
+  private categoriesService = inject( GenericService<Category> )
 
   public infoProducts: Product[] = [];
   public filterProduct: Product[] = [];
   public categoriesList: Category[] = [];
   public utilsSearch = new Utilities();
+  public currentCategory: number = 0
 
   ngOnInit(): void {
     this.productsService.getList().subscribe((res) => {res.forEach((item) => {
-      console.log(res);
       this.infoProducts.push(new Product(item));
       this.filterProduct = this.infoProducts
     }
   )})
+  this.categoriesService.getCategory().subscribe(res => {
+        this.categoriesList = res.map(category => {
+          return {
+            ...category,
+            name: category.name || 'Sin nombre',
+          };
+
+        });
+      })
   }
 
   goToDetails(id: number): void {
@@ -39,8 +47,8 @@ export class ProductsPageComponent implements OnInit{
     this.filterProduct = this.utilsSearch.searchFn(term, this.infoProducts) as Product[];
   }
 
-  onCategorySelected(category: Category): void {
-    console.log('Selected category:', category);
-    // Aquí puedes filtrar productos según la categoría seleccionada
+  onCategory(category: Category): void {
+    //filtro sobre la lista original
+    this.filterProduct = this.utilsSearch.filterCategoryFn(this.infoProducts, category);
   }
 }

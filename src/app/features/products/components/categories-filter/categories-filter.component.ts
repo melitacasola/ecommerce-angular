@@ -1,26 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Category } from '../../../../core/interfaces/product.interface';
-import { GenericService } from '../../../../core/services/genericService/generic.service';
+
 
 @Component({
   selector: 'app-categories-filter',
   templateUrl: './categories-filter.component.html',
   styleUrl: './categories-filter.component.scss'
 })
-export class CategoriesFilterComponent implements OnInit{
+export class CategoriesFilterComponent {
 
-  private categoriesService = inject( GenericService<Category> );
-  categoriesList: Category[] = [];
+  @Input() categoriesList: Category[] = [];
+  @Output() categorySelected = new EventEmitter<Category>();
 
-  ngOnInit(): void {
-    this.categoriesService.getCategory().subscribe(res => {
-      this.categoriesList = res.map(category => {
-        return {
-          ...category,
-          name: category.name || 'Sin nombre',
-        };
-      });
-    })
+  onCategorySelect(category: Category) {
+    this.categorySelected.emit(category);
   }
-
 }
