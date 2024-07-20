@@ -14,7 +14,7 @@ export class GenericService<TModel> {
   protected readonly resourceUrl: string = this.config.resourceEndpoint;
 
   getList(offset?: number) {
-    return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`, { params: { limit: 8, offset: offset ?? 0 } });
+    return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`, { params: { limit: 1000, offset: offset ?? 0 } });
   }
 
   getById(id: number) {

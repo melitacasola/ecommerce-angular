@@ -10,8 +10,7 @@
   <div class="container-content">
     <section class="container-products">
         <app-card-principal
-        *ngFor="let item of filterProduct"
-            [cardImage]="item.images[0]"
+        *ngFor="let item of filterProduct "
             [cardTitle]="item.title"
             [cardSubtitle]="item.category.name"
             [cardDescription]="item.description"
@@ -22,7 +21,10 @@
       </section>
 
     <div class="container-category-menu">
-      <app-categories-filter/>
+      <app-categories-filter
+      [categoriesList]="categoriesList"
+      (categorySelected)="onCategory($event)"
+      />
     </div>
   </div>
 </div>

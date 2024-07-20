@@ -11,6 +11,6 @@ export interface Category {
     id: number;
     name: string;
     image: string;
-    updateAt: string;
-    creationAt: string;
+    // updateAt: string;
+    // creationAt: string;
 }

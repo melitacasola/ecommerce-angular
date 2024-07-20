@@ -20,4 +20,8 @@ export class Product implements IProduct {
   getSearchValue(){
     return this.title.toLowerCase();
   }
+
+  getCategoryProduct(){
+    return this.category.id
+  }
 }

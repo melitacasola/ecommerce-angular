@@ -12,17 +12,20 @@ import { DefaultImagePipe } from './pipes/default-image/default-image.pipe';
 import { SearchComponent } from './components/search/search.component';
 import {MatListModule} from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
+import { FilterCategyPipe } from './pipes/filter-category/filter-categy.pipe';
 
 
 @NgModule({
   declarations: [
     CardPrincipalComponent,
+    FooterComponent,
     HeaderComponent,
     NavbarComponent,
-    DefaultImagePipe,
     SearchComponent,
+
+    DefaultImagePipe,
+    FilterCategyPipe,
     WordLimitPipe,
-    FooterComponent,
   ],
   imports: [
     AngularMaterialsModule,
@@ -35,9 +38,11 @@ import { FooterComponent } from './components/footer/footer.component';
     CardPrincipalComponent,
     HeaderComponent,
     NavbarComponent,
-    DefaultImagePipe,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+
+    DefaultImagePipe,
+    FilterCategyPipe
   ]
 })
 export class SharedModule { }
