@@ -5,7 +5,7 @@ import { IUser } from '../../../../core/interfaces/user.interface';
 @Component({
     selector: 'app-edit-user',
     templateUrl: './edit-user.component.html',
-    styles: ``
+    styleUrl: './edit-user.component.scss'
 })
 export class EditUserComponent {
     dialogRef = inject(MatDialogRef<EditUserComponent>);

@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class UsersPageComponent {
   private usersService = inject( GenericService<IUser> );
   public infoUser: IUser[] = [];
-  displayedColumns: string[] = ['id', 'name', 'email', 'avatar', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'avatar', 'actions'];
   dataSource = new MatTableDataSource<IUser>();
   private snackBar = inject( MatSnackBar );
   private dialog = inject( MatDialog );
