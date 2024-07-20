@@ -10,7 +10,9 @@ import { WordLimitPipe } from './pipes/wordLimit/word-limit.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DefaultImagePipe } from './pipes/default-image/default-image.pipe';
 import { SearchComponent } from './components/search/search.component';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import {MatListModule} from '@angular/material/list'
     DefaultImagePipe,
     SearchComponent,
     WordLimitPipe,
+    FooterComponent,
   ],
   imports: [
     AngularMaterialsModule,
@@ -33,7 +36,8 @@ import {MatListModule} from '@angular/material/list'
     HeaderComponent,
     NavbarComponent,
     DefaultImagePipe,
-    SearchComponent
+    SearchComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
