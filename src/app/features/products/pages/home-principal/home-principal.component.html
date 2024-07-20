@@ -1,0 +1,77 @@
+<mat-card>
+    <mat-card-header>
+        <img mat-card-avatar [src]="userHome?.avatar" alt="icon user">
+        <mat-card-title>{{ userHome?.name }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ userHome?.id }}</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>
+
+<div class="text-color">
+    <h2>Welcome to Our E-commerce Site!</h2>
+    <p>Your one-stop shop for the best products.</p>
+</div>
+
+<div class="content">
+    <app-card-principal
+        [cardImage]="'https://media.istockphoto.com/id/1270160040/es/foto/texto-sobre-el-cartel-blanco-vintage-bienvenidos-estamos-abiertos-vienen-en-en-el-caf%C3%A9.jpg?s=2048x2048&w=is&k=20&c=l1Xa7jULKyf8YyhIPxuR2-1Vtuq9I6oDdWIxphDxmHs='"
+        [cardTitle]="'The best products Ever'" 
+        [cardSubtitle]="'Products at the best price'" 
+        [cardDescription]="'At eCommerce Team Girls, we take pride in offering a wide range of high-quality products designed to meet your needs and exceed your expectations.'" 
+        classCard="info-card"
+        [textButton]="'Go to products'" 
+        (buttonClicked)="goToProducts()"
+        />
+
+        <app-card-principal
+        [cardImage]="'https://images.unsplash.com/photo-1518611507436-f9221403cca2?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'"
+        [cardTitle]="'The best products with the best team'" 
+        [cardSubtitle]="'Team with love'" 
+        [cardDescription]="'We have an exceptional team dedicated to bringing you the best experience on this page. Feel free to explore and discover what makes us stand out.'" 
+        classCard="info-card"
+        [textButton]="'Get to Know Us'"
+        (buttonClicked)="goToAboutUs()"
+        />
+</div>
+
+<div class="text-color">
+    <h2>Discover the Best of Our Website</h2>
+    <p>You can view the following information.</p>
+</div>
+
+<div class="content">
+    <mat-card color="primary">
+        <mat-card-header>
+            <mat-card-title>About Us</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Welcome to our e-commerce platform, where you can find a wide range of products
+                to suit your needs. Our mission is to provide quality products at competitive
+                prices, with excellent customer service.
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Our Mission</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                To bring you the best shopping experience online, with a vast selection of items
+                and a seamless checkout process.
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Contact Us</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Have any questions? Feel free to reach out to our support team.
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

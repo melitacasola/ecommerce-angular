@@ -3,8 +3,8 @@
     <mat-card-content class="second-part">
         <mat-card-title>{{ cardTitle }}</mat-card-title>
         <mat-card-subtitle>{{ cardSubtitle }}</mat-card-subtitle>
-        <p>{{ cardDescription | wordLimit:20 }}</p>
-        <mat-card-content>
+        <p>{{ cardDescription | wordLimit:30 }}</p>
+        <mat-card-content *ngIf="price !== undefined">
             <p color="primary" class="price">€ {{ price }}</p>
         </mat-card-content>
         <mat-card-actions>

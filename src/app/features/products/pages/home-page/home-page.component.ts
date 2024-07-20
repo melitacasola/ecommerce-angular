@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../../../core/services/authService/auth.service';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit {
-  private token = sessionStorage.getItem('access_token');
   private authService = inject(AuthService);
   public userValue!: boolean;
 
@@ -18,7 +16,6 @@ export class HomePageComponent implements OnInit {
     }, (error) => {
       console.error('Error fetching user profile:', error);
     });
-
   }
 
 }
