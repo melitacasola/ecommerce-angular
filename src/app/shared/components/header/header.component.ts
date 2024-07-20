@@ -1,6 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { AuthService } from '../../../core/services/authService/auth.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'shared-header',

@@ -24,6 +24,7 @@ export class ProductsPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.productsService.getList().subscribe((res) => {res.forEach((item) => {
+      console.log(res);
       this.infoProducts.push(new Product(item));
       this.filterProduct = this.infoProducts
     }
