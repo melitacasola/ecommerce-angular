@@ -13,18 +13,19 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class UsersPageComponent {
   private usersService = inject( GenericService<IUser> );
-  public infoUser: IUser[] = [];
-  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'avatar', 'actions'];
-  dataSource = new MatTableDataSource<IUser>();
   private snackBar = inject( MatSnackBar );
   private dialog = inject( MatDialog );
+
+  dataSource = new MatTableDataSource<IUser>();
+  public infoUser: IUser[] = [];
+  public displayedColumns: string[] = ['id', 'name', 'email', 'role', 'avatar', 'actions'];
 
   ngOnInit(): void {
     this.loadUsers();
   }
 
   loadUsers(): void {
-    this.usersService.getList().subscribe( (data: IUser[]) => {
+    this.usersService.getList(8).subscribe( (data: IUser[]) => {
       this.dataSource.data = data;
     })
   }
@@ -40,20 +41,29 @@ export class UsersPageComponent {
     }
   }
 
-  editUser(user: IUser): void {
+  editUser(id: number, user: IUser): void {
     const dialogRef = this.dialog.open(EditUserComponent, {
-      width: '250px',
+      width: '300px',
+      height: '480px',
       data: user
     });
+    console.log('entra¿¿¿?==', user);
+    console.log('entra¿¿¿?==', id);
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.usersService.update(result).subscribe(() => {
-          this.loadUsers();
-          this.snackBar.open('User updated successfully', 'Close', {
-            duration: 2000,
-          });
-        });
+
+    dialogRef.afterClosed().subscribe(res => {
+      console.log('antes del log',res);
+
+      if (res) {
+        console.log('demtro if', res);
+
+        // this.usersService.update(id, id).subscribe(() => {
+        //   this.loadUsers();
+        //   this.snackBar.open('User updated successfully', 'Close', {
+        //     duration: 2000,
+        //   });
+        // })
+
       }
     });
   }

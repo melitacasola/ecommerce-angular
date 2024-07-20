@@ -23,7 +23,7 @@ export class ProductsPageComponent implements OnInit{
   public currentCategory: number = 0
 
   ngOnInit(): void {
-    this.productsService.getList().subscribe((res) => {res.forEach((item) => {
+    this.productsService.getList(8, 0).subscribe((res) => {res.forEach((item) => {
       this.infoProducts.push(new Product(item));
       this.filterProduct = this.infoProducts
     }
