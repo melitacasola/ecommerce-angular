@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { IUser } from '../../../../core/interfaces/user.interface';
 import { GenericService } from '../../../../core/services/genericService/generic.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,21 +11,23 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss'
 })
-export class UsersPageComponent {
+export class UsersPageComponent implements OnInit {
   private usersService = inject( GenericService<IUser> );
   private snackBar = inject( MatSnackBar );
   private dialog = inject( MatDialog );
 
   dataSource = new MatTableDataSource<IUser>();
   public infoUser: IUser[] = [];
-  public displayedColumns: string[] = ['id', 'name', 'email', 'role', 'avatar', 'actions'];
+  public columnHeaders: string[] = ['id', 'name', 'email', 'role', 'avatar', 'actions'];
+  public imageColumns: string[] = ['avatar'];
 
   ngOnInit(): void {
     this.loadUsers();
+
   }
 
   loadUsers(): void {
-    this.usersService.getList(8).subscribe( (data: IUser[]) => {
+    this.usersService.getList(100,0).subscribe( (data: IUser[]) => {
       this.dataSource.data = data;
     })
   }
@@ -51,11 +53,11 @@ export class UsersPageComponent {
     console.log('entra¿¿¿?==', id);
 
 
-    dialogRef.afterClosed().subscribe(res => {
-      console.log('antes del log',res);
+    dialogRef.afterClosed().subscribe(id => {
+      console.log('antes del log',id);
 
-      if (res) {
-        console.log('demtro if', res);
+      if (id) {
+        console.log('demtro if', id);
 
         // this.usersService.update(id, id).subscribe(() => {
         //   this.loadUsers();
