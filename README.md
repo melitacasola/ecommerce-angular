@@ -1,27 +1,105 @@
-# EcommerceAngular
+# Ecommerce Angular con Platzi Fake Store API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este proyecto es una aplicación de ecommerce desarrollada con Angular. Utiliza la [Platzi Fake Store API](https://fakeapi.platzi.com/) para gestionar productos y usuarios. La aplicación incluye un sistema de roles (administrador y cliente) y permite al administrador realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) tanto en productos como en usuarios. Se ha utilizado Angular Material para la interfaz de usuario y la librería Toastr para las alertas.
 
-## Development server
+## Características
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Autenticación de usuarios**: Login y registro de usuarios con detección de roles (administrador y cliente).
+- **Roles de usuario**:
+  - **Administrador**: Puede gestionar productos y usuarios (CRUD).
+  - **Cliente**: Puede ver productos y realizar compras.
+- **Gestión de productos**: Crear, leer, actualizar y eliminar productos.
+- **Gestión de usuarios**: Crear, leer, actualizar y eliminar usuarios (solo para administradores).
+- **Alertas y notificaciones**: Uso de Toastr para mostrar notificaciones en las operaciones.
+- **Controlador de rutas**: Uso de guards para administrar las rutas por roles.
 
-## Code scaffolding
+## Tecnologías utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular
+- Angular Material
+- Toastr
+- Platzi Fake Store API
 
-## Build
+## Requisitos previos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js y npm instalados
+- Angular CLI instalado
 
-## Running unit tests
+## Instalación
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clona el repositorio:
+    ```bash
+    git clone https://github.com/tu_usuario/ecommerce-angular.git
+    cd ecommerce-angular
+    ```
 
-## Running end-to-end tests
+2. Instala las dependencias del proyecto:
+    ```bash
+    npm install
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Configura la URL de la Platzi Fake Store API en el archivo de entorno:
+    - Abre el archivo `src/environments/environment.ts` y asegúrate de que la URL de la API esté configurada correctamente.
 
-## Further help
+4. Inicia la aplicación:
+    ```bash
+    ng serve
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+5. Abre tu navegador y ve a `http://localhost:4200`.
+
+## Uso
+
+### Autenticación
+
+- Regístrate o inicia sesión con una cuenta existente o create una cuenta.
+- La aplicación detectará si el usuario es un administrador o un cliente basado en los datos de autenticación.
+
+### Panel de administración
+
+- Como administrador, puedes acceder al panel de administración donde podrás gestionar productos y usuarios.
+- Navega a `http://localhost:4200/admin` para acceder al panel de administración.
+
+### Gestión de productos
+
+- Los administradores pueden crear, editar, actualizar y eliminar productos desde el panel de administración.
+
+### Gestión de usuarios
+
+- Los administradores pueden crear, editar, actualizar y eliminar usuarios desde el panel de administración.
+
+## Estructura del proyecto
+
+```plaintext
+ecommerce-angular/
+├── src/
+│   ├── app/
+|        ├──core
+|            ├──guards
+|            ├──interceptors
+|            ├──services
+|            ├──interfaces
+|            ├──core.module.ts
+|        ├──features
+|             ├──auth
+|             ├──about-us
+|             ├──products
+|             ├──users
+|        ├──shared
+|             ├──angular-material
+|             ├──components
+|             ├──pipes
+|             ├──directives
+|             ├──utils
+|             ├──shared.module.ts
+|   ├──assets
+|   ├──environments
+─ README.md         
+
+````
+
+## Creadoras
+
+Melissa Casola - GitHub
+Brisna Paez - GitHub
+Lidia Luque - GitHub
