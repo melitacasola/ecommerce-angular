@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/services/authService/auth.service';
 import { IRegister } from '../../../../core/interfaces/user.interface';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../../../environments/environments';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -28,14 +29,12 @@ export class SignUpPageComponent implements OnInit {
     })
   }
 
-
   onSubmit(): void {
     const formData = this.registerForm.value as IRegister;
 
     if (!formData.avatar) {
-      formData.avatar = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lasprovincias.es%2Fsociedad%2Fmascotas%2Fgatos-saben-tristes-20211204214309-nt.html&psig=AOvVaw2DuWjWKv8ZJmwownpIVqEs&ust=1721510166292000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCICPwZeEtIcDFQAAAAAdAAAAABAw';
+      formData.avatar = environment.urlAvatarUserDefault;
     }
-
 
     this.registerService.register(formData).subscribe({
       next: (user) => {
