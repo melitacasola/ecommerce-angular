@@ -100,6 +100,6 @@ ecommerce-angular/
 
 ## Creadoras
 
-- [Melissa Casola](https://github.com/melitacasola)
-- [Brisna Paez](https://github.com/Brisnayu)
-- [Lidia Luque](https://github.com/LidiaLG)
+- [Melissa Casola](https://www.linkedin.com/in/melissa-casola/)
+- [Brisna Paez](https://www.linkedin.com/in/brisna-a-paez-m-283934154/)
+- [Lidia Luque](https://www.linkedin.com/in/lidialg/)
