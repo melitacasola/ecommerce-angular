@@ -39,39 +39,23 @@
 </div>
 
 <div class="content">
-    <mat-card color="primary">
-        <mat-card-header>
-            <mat-card-title>About Us</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <p>
-                Welcome to our e-commerce platform, where you can find a wide range of products
-                to suit your needs. Our mission is to provide quality products at competitive
-                prices, with excellent customer service.
-            </p>
-        </mat-card-content>
-    </mat-card>
 
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Our Mission</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <p>
-                To bring you the best shopping experience online, with a vast selection of items
-                and a seamless checkout process.
-            </p>
-        </mat-card-content>
-    </mat-card>
+    <app-card-simple 
+        [titleCard]="'About Us'"
+        [contentCard]="'Welcome to our e-commerce platform, where you can find a wide range of products
+        to suit your needs. Our mission is to provide quality products at competitive
+        prices, with excellent customer service.'"
+    />
 
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Contact Us</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <p>
-                Have any questions? Feel free to reach out to our support team.
-            </p>
-        </mat-card-content>
-    </mat-card>
+    <app-card-simple 
+        [titleCard]="'Our Mission'"
+        [contentCard]="'To bring you the best shopping experience online, with a vast selection of items
+        and a seamless checkout process.'"
+    />
+
+    <app-card-simple 
+        [titleCard]="'Contact Us'"
+        [contentCard]="'Have any questions? Feel free to reach out to our support team.'"
+    />
+
 </div>

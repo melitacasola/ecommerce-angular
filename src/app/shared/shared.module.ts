@@ -14,6 +14,9 @@ import {MatListModule} from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
 import { FilterCategyPipe } from './pipes/filter-category/filter-categy.pipe';
 import { GenericTableComponent } from './components/generic-table/generic-table.component';
+import { CardSimpleComponent } from './components/card-simple/card-simple.component';
+import { HoverElementDirective } from './directives/hoverElement/hover-element.directive';
+import { GoBackDirective } from './directives/goBack/go-back.directive';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { GenericTableComponent } from './components/generic-table/generic-table.
     DefaultImagePipe,
     FilterCategyPipe,
     WordLimitPipe,
+    CardSimpleComponent,
+    HoverElementDirective,
+    GoBackDirective,
   ],
   imports: [
     AngularMaterialsModule,
@@ -43,9 +49,9 @@ import { GenericTableComponent } from './components/generic-table/generic-table.
     NavbarComponent,
     SearchComponent,
     FooterComponent,
-
     DefaultImagePipe,
-    FilterCategyPipe
+    FilterCategyPipe,
+    CardSimpleComponent
   ]
 })
 export class SharedModule { }
