@@ -9,16 +9,11 @@ import { IUser } from '../../../../core/interfaces/user.interface';
 })
 export class EditUserComponent {
   dialogRef = inject(MatDialogRef<EditUserComponent>);
-  @Inject(MAT_DIALOG_DATA)
-  public data!: IUser;
 
-  onNoClick(): void {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: IUser) { }
+
+  onClose(): void {
     this.dialogRef.close();
-  }
-
-  onSaveChange(): void {
-    console.log('aca??');
-
   }
 
 }

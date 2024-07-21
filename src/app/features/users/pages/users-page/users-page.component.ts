@@ -2,9 +2,10 @@ import { Component, inject, OnInit } from '@angular/core';
 import { IUser } from '../../../../core/interfaces/user.interface';
 import { GenericService } from '../../../../core/services/genericService/generic.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditUserComponent } from '../components/edit-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-users-page',
@@ -13,8 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class UsersPageComponent implements OnInit {
   private usersService = inject( GenericService<IUser> );
-  private snackBar = inject( MatSnackBar );
   private dialog = inject( MatDialog );
+  private toastrService = inject(ToastrService);
 
   dataSource = new MatTableDataSource<IUser>();
   public infoUser: IUser[] = [];
@@ -36,9 +37,7 @@ export class UsersPageComponent implements OnInit {
     if (confirm('Are you sure you want to delete this user?')) {
       this.usersService.remove(id).subscribe(() => {
         this.loadUsers();
-        this.snackBar.open('User deleted successfully', 'Close', {
-          duration: 2000,
-        });
+        this.toastrService.success('User deleted successfully', 'Success');
       });
     }
   }
@@ -47,25 +46,24 @@ export class UsersPageComponent implements OnInit {
     const dialogRef = this.dialog.open(EditUserComponent, {
       width: '300px',
       height: '480px',
-      data: user
+      data: { ...user }
     });
-    console.log('entra¿¿¿?==', user);
-    console.log('entra¿¿¿?==', id);
+    console.log('ESTOS SIN MODIFICAR', user);
+    console.log('ESTE ES EL ID DEL USUARIO', id);
 
 
-    dialogRef.afterClosed().subscribe(id => {
-      console.log('antes del log',id);
+    dialogRef.afterClosed().subscribe(editedUser => {
+      console.log('ESTE ES EL NUEVO USUARIO',editedUser);
 
-      if (id) {
-        console.log('demtro if', id);
+      if (editedUser) {
+        console.log('DENTRO DE MI IF TENGO ESTE ID', editedUser.id);
 
-        // this.usersService.update(id, id).subscribe(() => {
-        //   this.loadUsers();
-        //   this.snackBar.open('User updated successfully', 'Close', {
-        //     duration: 2000,
-        //   });
-        // })
-
+        this.usersService.update(id, editedUser).subscribe(() => {
+          this.loadUsers();
+        })
+        this.toastrService.success('User updated successfully!', 'Success');
+      } else {
+        this.toastrService.warning('User not updated!', 'Warning');
       }
     });
   }
