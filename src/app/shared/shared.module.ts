@@ -13,12 +13,14 @@ import { SearchComponent } from './components/search/search.component';
 import {MatListModule} from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
 import { FilterCategyPipe } from './pipes/filter-category/filter-categy.pipe';
+import { GenericTableComponent } from './components/generic-table/generic-table.component';
 
 
 @NgModule({
   declarations: [
     CardPrincipalComponent,
     FooterComponent,
+    GenericTableComponent,
     HeaderComponent,
     NavbarComponent,
     SearchComponent,
@@ -36,6 +38,7 @@ import { FilterCategyPipe } from './pipes/filter-category/filter-categy.pipe';
   ],
   exports: [
     CardPrincipalComponent,
+    GenericTableComponent,
     HeaderComponent,
     NavbarComponent,
     SearchComponent,

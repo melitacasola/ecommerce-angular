@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="matDataSource" class="mat-elevation-z8">
+  <!-- Iterate over columns except for actions -->
+  <ng-container *ngFor="let column of displayedColumns">
+    <ng-container [matColumnDef]="column" *ngIf="column !== 'actions'">
+      <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="imageColumns.includes(column); else textCell" class="img-container">
+          <img *ngIf="element[column]" [src]="element[column]" alt="{{ column }} image" class="img-avatar" />
+        </ng-container>
+        <ng-template #textCell>
+          {{ element[column] || '-' }}
+        </ng-template>
+      </td>
+    </ng-container>
+  </ng-container>
+
+  <!-- Define the actions column separately -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="primary" (click)="onEdit(element)">Edit</button>
+      <button mat-button color="warn" (click)="onDelete(element.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+

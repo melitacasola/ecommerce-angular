@@ -1,5 +1,15 @@
 <shared-header />
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+<shared-generic-table
+  [columnHeaders]="columnHeaders"
+  [dataSource]="dataSource.data"
+  [imageColumns]="imageColumns"
+  (edit)="editUser($event.id, $event.user)"
+  (delete)="deleteUser($event)"
+/>
+
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -38,7 +48,7 @@
     </ng-container>
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+    <tr mat-header-row *matHeaderRowDef="columnHeaders"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnHeaders;"></tr>
+  </table> -->
 
