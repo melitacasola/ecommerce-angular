@@ -10,7 +10,7 @@ import { SERVICE_CONFIG } from '../../core/services/genericService/config/servic
 import { GenericService } from '../../core/services/genericService/generic.service';
 import { AngularMaterialsModule } from '../../shared/angular-materials/angular-materials.module';
 import { EditUserComponent } from './pages/components/edit-user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     UsersRoutingModule,
     SharedModule,
     AngularMaterialsModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [
     GenericService,

@@ -1,7 +1,8 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, EventEmitter, Inject, inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IUser } from '../../../../core/interfaces/user.interface';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-edit-user',
@@ -9,18 +10,39 @@ import { FormBuilder } from '@angular/forms';
     styleUrl: './edit-user.component.scss'
 })
 export class EditUserComponent {
-    dialogRef = inject(MatDialogRef<EditUserComponent>);
+
+  dialogRef = inject(MatDialogRef<EditUserComponent>);
   @Inject(MAT_DIALOG_DATA)
 
-  public genericForm = inject(FormBuilder)
+  @Output() sendChange = new EventEmitter<IUser>
+
   public data!: IUser;
+  public formGenericTemplate!: FormGroup
+  private genericForm = inject(FormBuilder)
+
+  ngOnInit(): void {
+    this.formGenericTemplate = this.genericForm.group({
+      email: [''],
+      name:  [''],
+      password: [''],
+      role:  [''],
+      avatar:  [''],
+    });
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  onSaveChange(): void{
-    console.log('onSave');
+  onSaveChange(): void {
+    // const updatedData: IUser = {
+    //   ...this.data,
+    //   ...this.formGenericTemplate.value
+    // };
+    console.log(this.formGenericTemplate.value);
+    // console.log(updatedData, 'updatetdata');
 
+    // this.dialogRef.close(updatedData);
   }
+
 
 }

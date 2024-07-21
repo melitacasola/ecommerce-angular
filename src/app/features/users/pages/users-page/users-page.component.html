@@ -4,10 +4,9 @@
   [columnHeaders]="columnHeaders"
   [dataSource]="dataSource.data"
   [imageColumns]="imageColumns"
-  (edit)="editUser($event.id, $event.user)"
+  (edit)="editUser($event)"
   (delete)="deleteUser($event)"
 />
-
 
 <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 

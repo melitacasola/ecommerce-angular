@@ -19,11 +19,36 @@
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let element">
       <button mat-button color="primary" (click)="onEdit(element)">Edit</button>
-      <button mat-button color="warn" (click)="onDelete(element.id)">Delete</button>
+      <button mat-button color="warn" (click)="onDelete(element.id)" >Delete</button>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-
+<!-- <table class="custom-table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of displayedColumns" >
+        {{ column }}
+      </th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let element of dataSource">
+      <td *ngFor="let column of displayedColumns">
+        <ng-container *ngIf="imageColumns.includes(column); else textCell" class="img-container">
+          <img *ngIf="getValue(element, column)" [src]="getValue(element, column)" alt="{{ column }} image" class="img-avatar" />
+        </ng-container>
+        <ng-template #textCell>
+          {{ getValue(element, column) || '-' }}
+        </ng-template>
+      </td>
+      <td>
+        <button *ngIf="isUser(element)" class="edit-btn" (click)="onEdit(element)">Edit</button>
+        <button *ngIf="isUser(element)" class="delete-btn" (click)="onDelete(element.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->

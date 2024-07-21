@@ -1,31 +1,63 @@
 <h1 mat-dialog-title>Edit User</h1>
-<div mat-dialog-content class="edit-modal-container">
-  <mat-dialog-content >
+<form [formGroup]="formGenericTemplate" (ngSubmit)="onSaveChange()">
+    <div mat-dialog-content class="edit-modal-container">
 
-    <mat-form-field >
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name">
-    </mat-form-field>
-    <mat-form-field>
-      <label>Email</label>
-      <input matInput formControlName="email">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput formControlName="password">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Role</mat-label>
-      <input matInput formControlName="role">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>avatar</mat-label>
-      <input matInput formControlName="avatar">
-    </mat-form-field>
 
-  </mat-dialog-content>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data">Save</button>
-</div>
+    <mat-dialog-content >
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <label>Name</label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="role">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>avatar</mat-label>
+        <input matInput formControlName="avatar">
+      </mat-form-field>
+
+    </mat-dialog-content>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button type="submit">Save</button>
+  </div>
+  </form>
+
+<!-- <h1 mat-dialog-title>Edit User</h1>
+    <div mat-dialog-content class="edit-modal-container" [formGroup]="formGenericTemplate" (ngSubmit)="onSaveChange()">
+      <mat-form-field>
+        <label>Name</label>
+        <input matInput [(ngModel)]="data.name">
+      </mat-form-field>
+      <mat-form-field>
+        <label>Email</label>
+        <input matInput [(ngModel)]="data.email">
+      </mat-form-field>
+      <mat-form-field>
+        <label>Password</label>
+        <input matInput [(ngModel)]="data.password">
+      </mat-form-field>
+      <mat-form-field>
+        <label>Role</label>
+        <input matInput [(ngModel)]="data.role">
+      </mat-form-field>
+      <mat-form-field>
+        <label>avatar</label>
+        <input matInput [(ngModel)]="data.avatar">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button [mat-dialog-close]="data" >Save</button>
+</div> -->

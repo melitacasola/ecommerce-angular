@@ -15,7 +15,7 @@ export class GenericTableComponent {
   @Input() dataSource: IUser[] | Product[] = [];
   @Input() imageColumns: string[] = [];
 
-  @Output() edit = new EventEmitter<{ id: number; user: IUser }>();
+  @Output() edit = new EventEmitter<IUser>();
   @Output() delete = new EventEmitter<number>();
 
   public displayedColumns: string[] = [];
@@ -32,11 +32,47 @@ export class GenericTableComponent {
   }
 
   onEdit(user: IUser) {
-    this.edit.emit({ id: user.id, user });
+    console.log('generic tabla', user);
+
+    this.edit.emit(user);
   }
 
   onDelete(id: number) {
     this.delete.emit(id);
   }
 
+  // @Input() columnHeaders: string[] = [];
+  // @Input() dataSource: Array<IUser | IProduct> = [];
+  // @Input() imageColumns: string[] = [];
+
+  // @Output() edit = new EventEmitter<{ id: number; user: IUser }>();
+  // @Output() delete = new EventEmitter<number>();
+
+  // public displayedColumns: string[] = [];
+
+  // ngOnInit(): void {
+  //   this.displayedColumns = this.columnHeaders;
+  // }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes['dataSource']) {
+  //     this.dataSource = this.dataSource;
+  //   }
+  // }
+
+  // onEdit(user: IUser) {
+  //   this.edit.emit({ id: user.id, user });
+  // }
+
+  // onDelete(id: number) {
+  //   this.delete.emit(id);
+  // }
+
+  // getValue(element: IUser | IProduct, column: string) {
+  //   return element[column as keyof (IUser | IProduct)];
+  // }
+
+  // isUser(element: IUser | IProduct): element is IUser {
+  //   return (element as IUser).email !== undefined;
+  // }
 }

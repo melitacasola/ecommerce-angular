@@ -12,9 +12,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './users-page.component.scss'
 })
 export class UsersPageComponent implements OnInit {
-  private usersService = inject( GenericService<IUser> );
-  private snackBar = inject( MatSnackBar );
-  private dialog = inject( MatDialog );
+  private usersService = inject(GenericService<IUser>);
+  private snackBar = inject(MatSnackBar);
+  private dialog = inject(MatDialog);
 
   dataSource = new MatTableDataSource<IUser>();
   public infoUser: IUser[] = [];
@@ -27,7 +27,7 @@ export class UsersPageComponent implements OnInit {
   }
 
   loadUsers(): void {
-    this.usersService.getList(100,0).subscribe( (data: IUser[]) => {
+    this.usersService.getList(100, 0).subscribe((data: IUser[]) => {
       this.dataSource.data = data;
     })
   }
@@ -43,32 +43,43 @@ export class UsersPageComponent implements OnInit {
     }
   }
 
-  editUser(id: number, user: IUser): void {
+  // editUser( user: IUser): void {
+  //   const dialogRef = this.dialog.open(EditUserComponent, {
+  //     width: '300px',
+  //     height: '480px',
+  //     data: user
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result: IUser | undefined) => {
+  //     console.log(result, 'resultss');
+  //     console.log(user, 'user padre');
+  //     console.log(user.id, 'aver????');
+
+  //     if (result) {
+  //       this.usersService.update(user.id, user).subscribe(() => {
+  //         this.loadUsers();
+  //         this.snackBar.open('User updated successfully', 'Close', {
+  //           duration: 2000,
+  //         });
+  //       });
+  //     }
+  //   });
+  // }
+  editUser(user: IUser): void {
     const dialogRef = this.dialog.open(EditUserComponent, {
-      width: '300px',
-      height: '480px',
+      width: '250px',
       data: user
     });
-    console.log('entra¿¿¿?==', user);
-    console.log('entra¿¿¿?==', id);
 
-
-    dialogRef.afterClosed().subscribe(resp => {
-      console.log('antes del log',resp);
-
-      if (id) {
-        console.log('demtro if', id);
-        console.log('demtro if', user);
-
-        this.usersService.update(id, user).subscribe(() => {
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.usersService.update(user.id, user).subscribe(() => {
           this.loadUsers();
           this.snackBar.open('User updated successfully', 'Close', {
             duration: 2000,
           });
-        })
-
+        });
       }
     });
   }
-
 }
