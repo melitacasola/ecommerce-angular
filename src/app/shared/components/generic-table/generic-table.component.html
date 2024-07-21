@@ -1,5 +1,5 @@
 <table mat-table [dataSource]="matDataSource" class="mat-elevation-z8">
-  <!-- Iterate over columns except for actions -->
+
   <ng-container *ngFor="let column of displayedColumns">
     <ng-container [matColumnDef]="column" *ngIf="column !== 'actions'">
       <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
@@ -14,7 +14,7 @@
     </ng-container>
   </ng-container>
 
-  <!-- Define the actions column separately -->
+
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let element">

@@ -30,6 +30,7 @@ export class ProductsPageComponent implements OnInit{
   )})
   this.categoriesService.getCategory().subscribe(res => {
         this.categoriesList = res.map(category => {
+
           return {
             ...category,
             name: category.name || 'Sin nombre',
@@ -52,3 +53,6 @@ export class ProductsPageComponent implements OnInit{
     this.filterProduct = this.utilsSearch.filterCategoryFn(this.infoProducts, category);
   }
 }
+
+
+

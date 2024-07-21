@@ -29,6 +29,7 @@ import { HomePrincipalComponent } from './pages/home-principal/home-principal.co
 ],
 providers: [
   GenericService,
+
   {
     provide: SERVICE_CONFIG,
     useValue: {resourceEndpoint: 'products'}

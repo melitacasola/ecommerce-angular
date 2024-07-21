@@ -11,7 +11,7 @@ export class FilterCategyPipe implements PipeTransform {
     if (!categoryToSearch) {
       return items;
     }
-    return items.filter(({ category }) => category === categoryToSearch)
+    return items.filter( category  => category.category.id === categoryToSearch.id)
   }
 
 }

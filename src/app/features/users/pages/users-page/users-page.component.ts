@@ -53,18 +53,19 @@ export class UsersPageComponent implements OnInit {
     console.log('entra¿¿¿?==', id);
 
 
-    dialogRef.afterClosed().subscribe(id => {
-      console.log('antes del log',id);
+    dialogRef.afterClosed().subscribe(resp => {
+      console.log('antes del log',resp);
 
       if (id) {
         console.log('demtro if', id);
+        console.log('demtro if', user);
 
-        // this.usersService.update(id, id).subscribe(() => {
-        //   this.loadUsers();
-        //   this.snackBar.open('User updated successfully', 'Close', {
-        //     duration: 2000,
-        //   });
-        // })
+        this.usersService.update(id, user).subscribe(() => {
+          this.loadUsers();
+          this.snackBar.open('User updated successfully', 'Close', {
+            duration: 2000,
+          });
+        })
 
       }
     });
