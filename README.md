@@ -100,6 +100,6 @@ ecommerce-angular/
 
 ## Creadoras
 
-Melissa Casola - GitHub
-Brisna Paez - GitHub
-Lidia Luque - GitHub
+- [Melissa Casola](https://github.com/melitacasola)
+- [Brisna Paez](https://github.com/Brisnayu)
+- [Lidia Luque](https://github.com/LidiaLG)
