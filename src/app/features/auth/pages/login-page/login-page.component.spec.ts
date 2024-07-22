@@ -148,6 +148,36 @@ describe('LoginComponent', () => {
 
     expect(component.onSubmit).toHaveBeenCalled();
 
+  });
+  it('debe mandar el formulario cuando click en onSubmit( servicio)',() =>{
+    const refElement = fixture.elementRef;
+    const items = refElement.nativeElement;
+    const label = items.querySelector('#label-id');
+
+    expect(label).toBeTruthy();
+
+    label.click()
+    fixture.detectChanges();
+
+    const email = items.querySelector('#email')
+    const password = items.querySelector('#password')
+    const button = items.querySelector('#loginBtn')
+
+    fixture.detectChanges();
+
+    router.events.subscribe(data => console.log(data));
+
+    email.value = 'maria@mail.com';
+    password.value = '12345';
+
+    fixture.detectChanges();
+
+    email.dispatchEvent(new Event('input'))
+    password.dispatchEvent(new Event('input'))
+
+    button.click()
+    fixture.detectChanges();
+
   })
 
 })
