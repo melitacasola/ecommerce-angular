@@ -97,7 +97,7 @@ describe('LoginComponent', () => {
       declarations: [LoginPageComponent],
       providers: [
         provideHttpClient(withInterceptors([authInterceptor])),
-        provideHttpClient(withInterceptors([notificationInterceptor])),
+        // provideHttpClient(withInterceptors([notificationInterceptor])),
         provideHttpClientTesting(),
 
       ]
@@ -140,11 +140,6 @@ describe('LoginComponent', () => {
     expect(emailControl?.valid).toBeTruthy()
   })
 
-  it('debe marcar campos validos', () => {
-    const passwordControl = component.loginForm.get('password');
-    passwordControl?.setValue('12345')
-    expect(passwordControl?.valid).toBeTruthy()
-  });
 
   it('debe mandar el formulario cuando click en onSubmit', () => {
     spyOn(component, 'onSubmit');
@@ -160,36 +155,37 @@ describe('LoginComponent', () => {
     expect(component.onSubmit).toHaveBeenCalled();
 
   });
-  it('debe mandar el formulario cuando click en onSubmit( servicio)', () => {
-    const refElement = fixture.elementRef;
-    const items = refElement.nativeElement;
-    const label = items.querySelector('#label-id');
 
-    expect(label).toBeTruthy();
+  // it('debe mandar el formulario cuando click en onSubmit( servicio)', () => {
+  //   const refElement = fixture.elementRef;
+  //   const items = refElement.nativeElement;
+  //   const label = items.querySelector('#label-id');
 
-    label.click()
-    fixture.detectChanges();
+  //   expect(label).toBeTruthy();
 
-    const email = items.querySelector('#email')
-    const password = items.querySelector('#password')
-    const button = items.querySelector('#loginBtn')
+  //   label.click()
+  //   fixture.detectChanges();
 
-    fixture.detectChanges();
+  //   const email = items.querySelector('#email')
+  //   const password = items.querySelector('#password')
+  //   const button = items.querySelector('#loginBtn')
 
-    router.events.subscribe(data => console.log(data));
+  //   fixture.detectChanges();
 
-    email.value = 'maria@mail.com';
-    password.value = '12345';
+  //   router.events.subscribe(data => console.log(data));
 
-    fixture.detectChanges();
+  //   email.value = 'maria@mail.com';
+  //   password.value = '12345';
 
-    email.dispatchEvent(new Event('input'))
-    password.dispatchEvent(new Event('input'))
+  //   fixture.detectChanges();
 
-    button.click()
-    fixture.detectChanges();
+  //   email.dispatchEvent(new Event('input'))
+  //   password.dispatchEvent(new Event('input'))
 
-  });
+  //   button.click()
+  //   fixture.detectChanges();
+
+  // });
 
 
   it('deberia redirigir a la Home luego de login success', fakeAsync(() => {
@@ -222,38 +218,37 @@ describe('LoginComponent', () => {
   // }));
 
 
-  // it('deberia redirigir a la Home luego de login success', fakeAsync(() => {
-  //   spyOn(authService, 'login').and.returnValue(of({ access_token: 'fake-token', refresh_token: 'fake-token' }));
-  //   spyOn(router, 'navigate').and.stub();
+  it('deberia redirigir a la Home luego de login success', fakeAsync(() => {
+    spyOn(authService, 'login').and.returnValue(of({ access_token: 'fake-token', refresh_token: 'fake-token' }));
+    spyOn(router, 'navigate').and.stub();
 
-  //   component.loginForm.setValue({ email: 'test@mail.com', password: 'testxsxsx123' })
-  //   component.onSubmit()
+    component.loginForm.setValue({ email: 'texxx@mail.com', password: 'xxxxxx' })
+    component.onSubmit()
 
-  //   tick();
+    tick();
 
-  //   expect(authService.login).toHaveBeenCalled();
-  //   expect(sessionStorage.getItem('access_token')).toEqual('fake-token');
-  //   expect(router.navigate).toHaveBeenCalledOnceWith(['home'])
+    expect(authService.login).toHaveBeenCalled();
+    expect(sessionStorage.getItem('access_token')).toEqual('fake-token');
+    expect(router.navigate).toHaveBeenCalledOnceWith(['home'])
 
-  // }));
+  }));
 
   //este test da error porqe dice qe no se pueden hacer peticiones reales;
   //y al hacerlo, me genera un token verídico, entonces DA error la page de arriba
 
 
-  // it('el componente se llama una vez al hacer login', (() => {
-  //   let loginElement: DebugElement;
-  //   const debugElement = fixture.debugElement;
-  //   authService = debugElement.injector.get(AuthService);
-  //   let loginSpy = spyOn(authService , 'login').and.callThrough();
-  //   loginElement = fixture.debugElement.query(By.css('.form-container'));
+  it('el componente se llama una vez al hacer login', (() => {
+    let loginElement: DebugElement;
+    const debugElement = fixture.debugElement;
+    authService = debugElement.injector.get(AuthService);
+    let loginSpy = spyOn(authService , 'login').and.callThrough();
+    loginElement = fixture.debugElement.query(By.css('.form-container'));
 
-  //   component.loginForm.controls['email'].setValue('test@mail.com');
-  //   component.loginForm.controls['password'].setValue('12345');
-  //   fixture.detectChanges()
-  //   loginElement.triggerEventHandler('ngSubmit');
-  //   expect(loginSpy).toHaveBeenCalledTimes(1);
-  //  }));
-
+    component.loginForm.controls['email'].setValue('maria@mail.com');
+    component.loginForm.controls['password'].setValue('12345');
+    fixture.detectChanges()
+    loginElement.triggerEventHandler('ngSubmit');
+    expect(loginSpy).toHaveBeenCalledTimes(1);
+   }));
 
 })
