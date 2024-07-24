@@ -9,9 +9,9 @@ import { async, of } from 'rxjs';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { authInterceptor } from '../../../../core/interceptors/auth.interceptor';
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting, HttpClientTestingModule } from '@angular/common/http/testing';
 import { HomePageComponent } from '../../../products/pages/home-page/home-page.component';
-import { DebugElement } from '@angular/core';
+import { DebugElement, inject } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ITokens } from '../../../../core/interfaces/tokens.interface';
 import { ILogin } from '../../../../core/interfaces/login.interface';
@@ -80,13 +80,14 @@ describe('LoginComponent', () => {
   let router: Router;
   let authService: AuthService;
   let routerLocation: Location;
-  let httpTestingController: HttpTestingController;
+  let httpMock: HttpTestingController;
   let token: ITokens;
 
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
+        HttpClientTestingModule,
         ReactiveFormsModule,
         AngularMaterialsModule,
         // HttpClientModule,
@@ -110,6 +111,7 @@ describe('LoginComponent', () => {
     router = TestBed.inject(Router);
     TestBed.inject(FormBuilder);
     routerLocation = TestBed.inject(Location)
+    httpMock = inject(HttpTestingController)
 
 
     fixture.detectChanges();
