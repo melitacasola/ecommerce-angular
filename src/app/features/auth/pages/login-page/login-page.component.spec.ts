@@ -111,7 +111,7 @@ describe('LoginComponent', () => {
     router = TestBed.inject(Router);
     TestBed.inject(FormBuilder);
     routerLocation = TestBed.inject(Location)
-    httpMock = inject(HttpTestingController)
+    httpMock = TestBed.inject(HttpTestingController)
 
 
     fixture.detectChanges();
