@@ -1,36 +1,48 @@
-
-
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container">
-        <h1>Login</h1>
-        <mat-form-field >
-            <mat-label id="label-id">Email</mat-label>
-            <input
-                id="email"
-                type="text"
-                matInput
-                placeholder="Nombre de usuario"
-                formControlName="email"
-            >
-        </mat-form-field>
+  <h1>Login</h1>
+  <mat-form-field>
+    <mat-label id="label-id">Email</mat-label>
+    <input
+      id="email"
+      type="text"
+      matInput
+      placeholder="Nombre de usuario"
+      formControlName="email"
+    />
+  </mat-form-field>
+  <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.dirty">
+    <div *ngIf="loginForm.get('email')?.errors?.['required']">
+      Email is required.
+    </div>
+    <div *ngIf="loginForm.get('email')?.errors?.['email']">
+      Invalid email format.
+    </div>
+  </div>
 
-        <mat-form-field>
-            <mat-label id="label-id">Contraseña</mat-label>
-            <input
-                id="password"
-                type="password"
-                matInput
-                placeholder="Contraseña"
-                formControlName="password"
-            >
-        </mat-form-field>
+  <mat-form-field>
+    <mat-label id="label-id">Contraseña</mat-label>
+    <input
+      id="password"
+      type="password"
+      matInput
+      placeholder="Contraseña"
+      formControlName="password"
+    />
+  </mat-form-field>
 
-        <button mat-button mat-flat-button color="primary" type="submit" data-testid="loginBtn" id="loginBtn">
-            <mat-icon>save</mat-icon>
-            Ingresar
-        </button>
+  <button
+    mat-button
+    mat-flat-button
+    color="primary"
+    type="submit"
+    data-testid="loginBtn"
+    id="loginBtn"
+  >
+    <mat-icon>save</mat-icon>
+    Ingresar
+  </button>
 
-        <div>
-            <a routerLink="/auth/signup">Registrate</a>
-        </div>
-    </form>
-
+  <div>
+    <a routerLink="/auth/signup">Registrate</a>
+  </div>
+</form>
