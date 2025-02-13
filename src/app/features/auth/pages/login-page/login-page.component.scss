@@ -1,6 +1,16 @@
-.form-container {
+div {
+  margin: 8rem 35rem;
   display: flex;
   flex-direction: column;
-  padding: 3em;
-  margin: 8rem 25rem;
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 3em;
+  }
+
+  a {
+    font-size: 18px;
+    text-decoration: none;
+    padding: 0 3em;
+  }
 }
