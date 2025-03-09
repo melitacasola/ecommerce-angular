@@ -6,12 +6,16 @@ import { AuthRoutingModule } from './auth-routing.module';
 
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,

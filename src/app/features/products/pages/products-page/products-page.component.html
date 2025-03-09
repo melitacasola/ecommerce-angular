@@ -1,29 +1,28 @@
 <div>
-
   <div class="container-search">
     <shared-search
-    placeholder="buscar productos..."
-    (onDebounce)="searchTerm($event)"
+      placeholder="buscar productos..."
+      (onDebounce)="searchTerm($event)"
     />
   </div>
 
   <div class="container-content">
-    <section class="container-products">
-        <app-card-principal
-        *ngFor="let item of filterProduct "
-            [cardTitle]="item.title"
-            [cardSubtitle]="item.category.name"
-            [cardDescription]="item.description"
-            [price]="item.price"
-            [textButton]="'Details'"
+    <div class="container-products" *ngIf="products$ | async as products">
+      <app-card-principal
+        *ngFor="let item of products"
+        [cardTitle]="item.title"
+        [cardSubtitle]="item.category.name"
+        [cardDescription]="item.description"
+        [price]="item.price"
+        [textButton]="'Details'"
         (buttonClicked)="goToDetails(item.id)"
-        />
-      </section>
+      />
+    </div>
 
     <div class="container-category-menu">
       <app-categories-filter
-      [categoriesList]="categoriesList"
-      (categorySelected)="onCategory($event)"
+        [categoriesList]="categoriesList"
+        (categorySelected)="onCategory($event)"
       />
     </div>
   </div>

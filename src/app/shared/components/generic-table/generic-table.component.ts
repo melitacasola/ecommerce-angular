@@ -1,14 +1,18 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { User } from '../../../core/models/user.model';
-import { Product } from '../../../core/models/product.model';
-import { IProduct } from '../../../core/interfaces/product.interface';
 import { IUser } from '../../../core/interfaces/user.interface';
+import { Product } from '../../../core/models/product.model';
 
 @Component({
   selector: 'shared-generic-table',
   templateUrl: './generic-table.component.html',
-  styleUrl: './generic-table.component.scss'
+  styleUrl: './generic-table.component.scss',
 })
 export class GenericTableComponent {
   @Input() columnHeaders: string[] = [];
@@ -38,5 +42,4 @@ export class GenericTableComponent {
   onDelete(id: number) {
     this.delete.emit(id);
   }
-
 }

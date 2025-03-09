@@ -1,23 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { environment } from '../../../../environments/environments';
 import { ILogin } from '../../interfaces/login.interface';
-import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { ITokens } from '../../interfaces/tokens.interface';
 import { IRegister, IUser } from '../../interfaces/user.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private http = inject(HttpClient);
   private url = environment.baseUrl;
+  private router = inject(Router);
 
   login(loginForm: Partial<ILogin>): Observable<ITokens> {
-    return this.http.post<ITokens>(`${this.url}auth/login`, loginForm)
-      .pipe(
-        tap(response => sessionStorage.setItem('access_token', response.access_token)),
-      )
+    return this.http.post<ITokens>(`${this.url}auth/login`, loginForm).pipe(
+      tap((response) => {
+        sessionStorage.setItem('access_token', response.access_token);
+        this.router.navigate(['/home']);
+      })
+    );
   }
 
   isAdmin(): Observable<boolean> {
@@ -26,15 +30,14 @@ export class AuthService {
       throw new Error('User is not authenticated');
     }
 
-    return this.http.get<IUser>(`${this.url}auth/profile`)
-      .pipe(
-        map(response => response.role === 'admin'),
-        catchError(() => of(false)),
-      );
+    return this.http.get<IUser>(`${this.url}auth/profile`).pipe(
+      map((response) => response.role === 'admin'),
+      catchError(() => of(false))
+    );
   }
 
   userHome(): Observable<IUser> {
-    return this.http.get<IUser>(`${this.url}auth/profile`)
+    return this.http.get<IUser>(`${this.url}auth/profile`);
   }
 
   isLogged(): Observable<boolean> {
@@ -52,11 +55,10 @@ export class AuthService {
 
   register(registerForm: IRegister): Observable<IUser> {
     return this.http.post<IUser>(`${this.url}users`, registerForm).pipe(
-      catchError(error => {
+      catchError((error) => {
         console.error('Error during registration:', error);
         return throwError(() => new Error('Registration failed'));
       })
     );
   }
-
 }
