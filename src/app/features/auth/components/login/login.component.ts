@@ -1,5 +1,6 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthService } from '../../../../core/services/authService/auth.service';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnDestroy {
   public authForm!: FormGroup;
   private fb = inject(NonNullableFormBuilder);
   private authService = inject(AuthService);
-
+  private router = inject(Router);
   private readonly destroy$ = new Subject<void>();
 
   public loginForm = this.fb.group({
@@ -21,7 +22,9 @@ export class LoginComponent implements OnDestroy {
   });
 
   onSubmit(): void {
-    this.authService.login(this.loginForm.value).subscribe();
+    this.authService
+      .login(this.loginForm.value)
+      .subscribe((response) => this.router.navigate(['/home']));
   }
 
   public ngOnDestroy(): void {

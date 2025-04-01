@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { environment } from '../../../../environments/environments';
 import { ILogin } from '../../interfaces/login.interface';
@@ -13,13 +12,11 @@ import { IRegister, IUser } from '../../interfaces/user.interface';
 export class AuthService {
   private http = inject(HttpClient);
   private url = environment.baseUrl;
-  private router = inject(Router);
 
   login(loginForm: Partial<ILogin>): Observable<ITokens> {
     return this.http.post<ITokens>(`${this.url}auth/login`, loginForm).pipe(
       tap((response) => {
         sessionStorage.setItem('access_token', response.access_token);
-        this.router.navigate(['/home']);
       })
     );
   }
