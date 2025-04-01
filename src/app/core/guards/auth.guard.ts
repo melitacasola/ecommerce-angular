@@ -6,7 +6,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   const isAuth = sessionStorage.getItem('access_token');
 
   if (isAuth) {
-    // router.navigate(['home']);
     return true;
   } else {
     router.navigate(['auth/login']);

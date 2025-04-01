@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../../../core/services/authService/auth.service';
 
 @Component({
@@ -10,21 +10,25 @@ import { AuthService } from '../../../../core/services/authService/auth.service'
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnDestroy {
-  public authForm!: FormGroup;
-  private fb = inject(NonNullableFormBuilder);
+  private destroy$ = new Subject<void>();
+  private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
-  private readonly destroy$ = new Subject<void>();
 
-  public loginForm = this.fb.group({
+  public loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
   onSubmit(): void {
+    if (this.loginForm.invalid) return;
     this.authService
       .login(this.loginForm.value)
-      .subscribe((response) => this.router.navigate(['/home']));
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () => this.router.navigate(['/home']),
+        error: (err) => console.error('Login failed', err),
+      });
   }
 
   public ngOnDestroy(): void {

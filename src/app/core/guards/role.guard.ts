@@ -1,20 +1,17 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from '../services/authService/auth.service';
-import { state } from '@angular/animations';
+import { CanActivateFn, Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { AuthService } from '../services/authService/auth.service';
 
 export const roleGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService)
+  const authService = inject(AuthService);
   const router = inject(Router);
 
-  return authService.isAdmin()
-    .pipe(
-      tap(isRoleAdmin => console.log('isAdmin?', isRoleAdmin)),
-      tap(isRoleAdmin => {
-        if (!isRoleAdmin) {
-          router.navigate(['/home'])
-        }
-      }),
-    )
+  return authService.isAdmin().pipe(
+    tap((isRoleAdmin) => {
+      if (!isRoleAdmin) {
+        router.navigate(['/home']);
+      }
+    })
+  );
 };
