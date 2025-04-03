@@ -14,11 +14,12 @@ export class HomePrincipalComponent implements OnInit {
   public userHome?: IUser;
 
   ngOnInit(): void {
-    this.authService.userHome().subscribe({
-      next: (res: IUser) => {
-        (this.userHome = res), this.router.navigate([`/home`]);
-      },
-    });
+    // debugger;
+    // this.authService.getUserProfile().subscribe({
+    //   next: (res: IUser) => {
+    //     (this.userHome = res), this.router.navigate([`/home`]);
+    //   },
+    // });
   }
 
   goToProducts(): void {

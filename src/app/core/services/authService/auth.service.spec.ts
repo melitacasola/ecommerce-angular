@@ -1,20 +1,23 @@
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-import { AuthService } from './auth.service';
 import { environment } from '../../../../environments/environments';
 import { ILogin } from '../../interfaces/login.interface';
 import { ITokens } from '../../interfaces/tokens.interface';
 import { IRegister, IUser } from '../../interfaces/user.interface';
+import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
   let httpMock: HttpTestingController;
-  const baseUrl = environment.baseUrl
+  const baseUrl = environment.baseUrl;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [AuthService]
+      providers: [AuthService],
     });
     service = TestBed.inject(AuthService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -29,15 +32,21 @@ describe('AuthService', () => {
   });
 
   it('should log in the user', () => {
-    const loginForm: Partial<ILogin> = { email: 'maria@mail.com', password: '12345' };
-    const mockResponse: ITokens = { access_token: 'fake-token', refresh_token: 'fake-token' };
+    const loginForm: Partial<ILogin> = {
+      email: 'maria@mail.com',
+      password: '12345',
+    };
+    const mockResponse: ITokens = {
+      access_token: 'fake-token',
+      refresh_token: 'fake-token',
+    };
 
     service.login(loginForm).subscribe({
-      next: response => {
-      expect(response).toEqual(mockResponse);
-      expect(sessionStorage.getItem('access_token')).toEqual('fake-token');
-    },
-    error: () => fail('error')
+      next: (response) => {
+        expect(response).toEqual(mockResponse);
+        expect(sessionStorage.getItem('access_token')).toEqual('fake-token');
+      },
+      error: () => fail('error'),
     });
 
     const req = httpMock.expectOne(`${baseUrl}auth/login`);
@@ -46,11 +55,18 @@ describe('AuthService', () => {
   });
 
   it('should return if user is admin', () => {
-    const mockResponse: IUser = { id: 1, name: 'Admin', role: 'admin', email: 'admin@example.com', password: 'admin123', avatar: '/assets/admin.jpg' };
+    const mockResponse: IUser = {
+      id: 1,
+      name: 'Admin',
+      role: 'admin',
+      email: 'admin@example.com',
+      password: 'admin123',
+      avatar: '/assets/admin.jpg',
+    };
 
     sessionStorage.setItem('access_token', 'fake-token');
 
-    service.isAdmin().subscribe(isAdmin => {
+    service.isAdmin().subscribe((isAdmin) => {
       expect(isAdmin).toBeTrue();
     });
 
@@ -60,29 +76,36 @@ describe('AuthService', () => {
   });
 
   it('should handle registration failure', () => {
-    const registerForm: IRegister = { name: 'test', email: 'test@example.com', password: 'password', role: 'customer' };
-    const mockUser = { id: 1, name: 'Admin', role: 'admin', email: 'admin@example.com', password: 'admin123', avatar: '/assets/admin.jpg' };
+    const registerForm: IRegister = {
+      name: 'test',
+      email: 'test@example.com',
+      password: 'password',
+      role: 'customer',
+    };
+    const mockUser = {
+      id: 1,
+      name: 'Admin',
+      role: 'admin',
+      email: 'admin@example.com',
+      password: 'admin123',
+      avatar: '/assets/admin.jpg',
+    };
 
     service.register(registerForm).subscribe({
-      next: response => {
+      next: (response) => {
         expect(response).toEqual(mockUser);
       },
       error: (error) => {
         expect(error).toBeTruthy();
         expect(error.message).toEqual('Registration failed');
-      }
+      },
     });
 
     const req = httpMock.expectOne(`${baseUrl}users`);
     expect(req.request.method).toBe('POST');
     req.flush(mockUser);
   });
-
 });
-
-
-
-
 
 // import { TestBed } from '@angular/core/testing';
 

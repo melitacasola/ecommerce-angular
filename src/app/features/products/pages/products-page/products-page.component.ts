@@ -4,6 +4,7 @@ import {
   Category,
   IProduct,
 } from '../../../../core/interfaces/product.interface';
+
 import { Product } from '../../../../core/models/product.model';
 import { GenericService } from '../../../../core/services/genericService/generic.service';
 import { Utilities } from '../../../../shared/utils/utilities.util';
@@ -19,11 +20,11 @@ export class ProductsPageComponent implements OnInit {
   private categoriesService = inject(GenericService<Category>);
 
   public infoProducts: Product[] = [];
-  public filterProduct: Product[] = [];
+  public filterProduct: IProduct[] = [];
   public categoriesList: Category[] = [];
   public utilsSearch = new Utilities();
   public currentCategory: number = 0;
-  products$ = this.productsService.products$;
+  products$ = this.productsService.getProducts();
 
   ngOnInit(): void {
     this.categoriesService.getCategory().subscribe((res) => {
@@ -44,7 +45,7 @@ export class ProductsPageComponent implements OnInit {
     this.filterProduct = this.utilsSearch.searchFn(
       term,
       this.infoProducts
-    ) as Product[];
+    ) as IProduct[];
   }
 
   onCategory(category: Category): void {

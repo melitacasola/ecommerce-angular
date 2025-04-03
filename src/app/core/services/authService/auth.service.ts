@@ -49,7 +49,7 @@ export class AuthService {
 
   register(registerForm: IRegister): Observable<IUser> {
     return this.http.post<IUser>(`${this.url}users`, registerForm).pipe(
-      catchError((error) => {
+      catchError(() => {
         throw new Error('Registration failed');
       })
     );

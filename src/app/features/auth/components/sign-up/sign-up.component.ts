@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subject, takeUntil } from 'rxjs';
 import { environment } from '../../../../../environments/environments';
 import { IRegister } from '../../../../core/interfaces/user.interface';
 import { AuthService } from '../../../../core/services/authService/auth.service';
@@ -12,8 +13,10 @@ import { AuthService } from '../../../../core/services/authService/auth.service'
   styleUrl: './sign-up.component.scss',
 })
 export class SignUpComponent implements OnInit {
+  private destroy$ = new Subject<void>();
+
   private fb = inject(FormBuilder);
-  private registerService = inject(AuthService);
+  private authService = inject(AuthService);
   private toastrService = inject(ToastrService);
   private router = inject(Router);
 
@@ -36,15 +39,32 @@ export class SignUpComponent implements OnInit {
       formData.avatar = environment.urlAvatarUserDefault;
     }
 
-    this.registerService.register(formData).subscribe({
-      next: (user) => {
-        this.toastrService.success('User created successfully!', 'Success');
-        this.router.navigate(['/auth/login']);
-      },
-      error: (err) => {
-        console.error('Error durante el registro:', err);
-        this.toastrService.error('Error during user creation!', 'Error');
-      },
-    });
+    this.authService
+      .register(formData)
+      .pipe(
+        takeUntil(this.destroy$)
+        // switchMap((user) => {
+        //   this.toastrService.success('User created successfully!', 'Success');
+        //   return this.authService.login({
+        //     email: user.email,
+        //     password: user.password,
+        //   });
+        //   //catchError(() => {para qe no falle el login}) o si falla quedarme en register.
+        // })
+      )
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          this.toastrService.error('Login failed after registration', err);
+          // this.router.navigate(['/auth/login']);
+        },
+      });
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
