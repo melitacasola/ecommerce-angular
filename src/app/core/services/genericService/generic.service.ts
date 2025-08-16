@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environments';
 import { IProduct } from '../../interfaces/product.interface';
 import { SERVICE_CONFIG } from './config/service-config';
@@ -13,10 +13,6 @@ export class GenericService<TModel> {
   protected readonly config = inject(SERVICE_CONFIG);
   protected readonly baseUrl: string = environment.baseUrl;
   protected readonly resourceUrl: string = this.config.resourceEndpoint;
-
-  products$ = this.http
-    .get<IProduct[]>(`${this.baseUrl}${this.resourceUrl}`)
-    .pipe(tap((products) => console.log(products)));
 
   getProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${this.baseUrl}${this.resourceUrl}`);

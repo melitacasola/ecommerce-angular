@@ -24,6 +24,7 @@ export class ProductsPageComponent implements OnInit {
   public categoriesList: Category[] = [];
   public utilsSearch = new Utilities();
   public currentCategory: number = 0;
+
   products$ = this.productsService.getProducts();
 
   ngOnInit(): void {
@@ -49,7 +50,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   onCategory(category: Category): void {
-    //filtro sobre la lista original
     this.filterProduct = this.utilsSearch.filterCategoryFn(
       this.infoProducts,
       category

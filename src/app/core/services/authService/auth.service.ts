@@ -16,7 +16,7 @@ export class AuthService {
   login(credentials: ILogin): Observable<ITokens> {
     return this.http.post<ITokens>(`${this.url}auth/login`, credentials).pipe(
       tap((response) =>
-        sessionStorage.setItem('access_token', response.access_token)
+        sessionStorage.setItem('access_token', response.access_token),
       ),
       catchError(() => {
         throw new Error('Login failed');
